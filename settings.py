@@ -8,7 +8,7 @@ class Settings():
         self.bg_color = (230,230,230)
         #setting bullet
         self.bullet_speed_factor = 20
-        self.bullet_width = 1000
+        self.bullet_width = 20
         self.bullet_height = 5
         self.bullet_color = 60,60,60
         self.bullet_allowed = 20

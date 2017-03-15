@@ -5,13 +5,13 @@ class Button():
     def __init__(self, ai_settings, screen, msg):
         self.screen = screen
         self.screen_rect = screen.get_rect()
-        #setting button screen and attribute
-        self.width, self.height = 200, 50
+        # setting button screen and attribute
+        self.width, self.height = 20, 50
         self.button_color = (0, 255, 0)
         self.text_color = (255, 255, 255)
         self.font = pygame.font.SysFont(None, 48)
 
-        #set button rcet and let it center
+        # set button rcet and let it center
         self.rect = pygame.Rect(0, 0, self.width, self.height)
         self.rect.center = self.screen_rect.center
         #fill message on screen
