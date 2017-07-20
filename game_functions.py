@@ -5,6 +5,7 @@ from time import sleep
 from bullet import Bullet
 from time import sleep
 
+
 def check_events(ai_settings, screen, stats, play_button, ship,
                     aliens, bullets):
     for event in pygame.event.get():
@@ -19,11 +20,17 @@ def check_events(ai_settings, screen, stats, play_button, ship,
             check_play_button(ai_settings, screen, stats, play_button, ship,
                                     aliens, bullets, mouse_x, mouse_y)
 
+
+
 def check_keydown_events(event, ai_settings, screen, ship, bullets):
     if event.key == pygame.K_RIGHT:
         ship.moving_right = True
     elif event.key == pygame.K_LEFT:
-         ship.moving_left = True
+        ship.moving_left = True
+    elif event.key == pygame.K_DOWN:
+        ship.moving_down = True
+    elif event.key == pygame.K_UP:
+        ship.moving_up = True
     elif event.key == pygame.K_SPACE:
         if len(bullets) < ai_settings.bullet_allowed:
             new_bullet = Bullet(ai_settings, screen, ship)
@@ -31,21 +38,28 @@ def check_keydown_events(event, ai_settings, screen, ship, bullets):
     elif event.key == pygame.K_q:
             sys.exit()
 
+
+
 def check_keyup_events(event, ship):
     if event.key == pygame.K_RIGHT:
         ship.moving_right = False
     elif event.key == pygame.K_LEFT:
         ship.moving_left = False
+    elif event.key == pygame.K_DOWN:
+        ship.moving_down = False
+    elif event.key == pygame.K_UP:
+        ship.moving_up = False
+
 
 def update_screen(ai_settings, screen, stats, sb, ship, aliens, bullets,
                   play_button):
-    '''更新屏幕上的图像，并且换到新屏幕'''
+    """更新屏幕上的图像，并且换到新屏幕"""
     screen.fill(ai_settings.bg_color)
     for bullet in bullets.sprites():
         bullet.draw_bullet()
     ship.blitme()
     aliens.draw(screen)
-    #display score
+    # display score
     sb.show_score()
     if not stats.game_active:
         play_button.draw_button()
