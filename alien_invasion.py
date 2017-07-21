@@ -10,12 +10,12 @@ from scoreboard import Scoreboard
 import game_functions as gf
 
 def run_game():
-#初始化，并且创建一个屏幕对象
+# 初始化，并且创建一个屏幕对象
     pygame.init()
     ai_settings = Settings()
     screen =pygame.display.set_mode((
             ai_settings.screen_width,ai_settings.screen_height))
-    #set title
+    # set title
     pygame.display.set_caption("Alien Invasion")
     # draw button
     play_button = Button(ai_settings, screen, "play_button")
@@ -30,15 +30,15 @@ def run_game():
     aliens = Group()
     # create aliens Group
     gf.create_fleet(ai_settings, screen, ship, aliens)
-    #again game main loop
+    # again game main loop
     while True:
-        #moitoring keyboard and mouse time
+        # moitoring keyboard and mouse time
         gf.check_events(ai_settings, screen, stats, play_button, ship,
                             aliens, bullets)
         if stats.game_active:
             ship.update()
             bullets.update()
-        #delete not visible bullets
+        # delete not visible bullets
             gf.update_bullets(ai_settings, screen, stats,
                                 sb, ship, aliens,bullets)
             gf.update_aliens(ai_settings, stats, screen,

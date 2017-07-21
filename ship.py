@@ -1,5 +1,7 @@
 import pygame
-class Ship():
+
+
+class Ship:
     def __init__(self, ai_settings, screen):
         # initialization place the ship screen
         self.screen = screen
@@ -21,12 +23,9 @@ class Ship():
         self.moving_right = False
         self.moving_left = False
 
-
-
     def blitme(self):
         # draw place the ship
         self.screen.blit(self.image, self.rect)
-
 
     def update(self):
         if self.moving_right and self.rect.right < self.screen_rect.right:
